@@ -3,7 +3,7 @@
 
 ## 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
-### 添加网络权限
+### 请一定记得添加网络权限
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 ```
@@ -22,7 +22,21 @@ dependencies {
 	    implementation 'com.github.hzhdeveloper:metamqtt:1.0.1'
 }
 ```
-
+## 用法
+```
+### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
+MetaMqtt.with(this)
+                .url("XXX")
+                .port("XXX")
+                .client("mqtttest")
+                .username("XXX")
+                .password("XXX")
+                .topic("test")
+                .timeout(10)
+                .beat(20)
+                .callback(new MetaMqttCallBack(){})
+		.start()
+```
 ## License
 ```
 Copyright 2022 - 2022 hzhdeveloper
