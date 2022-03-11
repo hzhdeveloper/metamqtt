@@ -23,8 +23,8 @@ dependencies {
 }
 ```
 ## 用法
-```
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
+```
 MetaMqtt.with(this)
                 .url("XXX")
                 .port("XXX")
@@ -35,7 +35,7 @@ MetaMqtt.with(this)
                 .timeout(10)
                 .beat(20)
                 .callback(new MetaMqttCallBack(){})
-		.start()
+		.start();
 ```
 ## License
 ```
