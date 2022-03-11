@@ -10,7 +10,6 @@ import android.content.Context;
  */
 public class MetaDriver {
     private static MetaDriver INSTANCE;
-    private String ta = "";
     private final MetaManager manager = new MetaManager();
 
     /**

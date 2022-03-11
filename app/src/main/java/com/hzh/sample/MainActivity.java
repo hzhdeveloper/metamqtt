@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         MetaMqtt.with(this)
                 .url("XXX")
                 .port("XXX")
-                .client("mqtttest")
+                .client("sample")
                 .username("XXX")
                 .password("XXX")
                 .topic("test")
