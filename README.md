@@ -23,8 +23,9 @@ allprojects {
 ### 第二步 在app的build.gradle添加依赖项
 ```Groovy
 dependencies {
-	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-new'
+	implementation 'com.github.hzhdeveloper:metamqtt:1.0.2'
 }
+
 ```
 ## ○ 用法
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
@@ -42,10 +43,10 @@ MetaMqtt.with(this)			 // 上下文Context
                 .callback(new MetaMqttCallBack(){})
 		.start();		 // 开始，let's do it
 ```
-### 其中 callback 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常等回调
+### 其中 callback 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常等回调，如果不需要这么多回调，可以直接新建CallBack回调并作为抽象类继承MetaMqttCallBack。
 ## ○ 注意事项
 #### 1.订阅的Topic主题如果要使用/ 或者 + 这两个通配符，那么 / 或者 + 的前后一定不能相同，建议这样使用：订阅的主题都为app/+或者app/#，然后发送消息时所用的主题建议为app/xxx
-#### 2.clientId一定不能重复，虽然说可以不设置，但还是尽可能的知道clientId，保证每个设备的clientId不一样，如果一样则会导致很多问题。
+#### 2.clientId一定不能重复，虽然说可以不设置，但还是尽可能的设置clientId，保证每个设备的clientId不一样，如果一样则会导致很多问题。
 #### 3.建议参考项目内的app demo实现
 ## ○ 原理
 #### 通过Service进行MQTT的连接，并在适当的时侯进行数据回调。
