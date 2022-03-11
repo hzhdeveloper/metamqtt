@@ -7,7 +7,7 @@
 
 ## ○ 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
-### ◆ 请一定记得添加网络权限
+### ◆ 请检查网络未连接回调，如果触发没网络回调，请添加网络权限
 ```Java
 <uses-permission android:name="android.permission.INTERNET" />
 ```
