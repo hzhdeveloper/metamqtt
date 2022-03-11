@@ -1,5 +1,6 @@
 ## metamqtt
-一个MQTT的库，极大方便操作连接MQTT以及消息收发 。-------------------------------a dependence for mqtt to connect and get or send message☺☺
+#### 一个MQTT的库，极大方便操作连接MQTT以及消息收发 。-------------------------------a dependence for mqtt to connect and get or send message☺☺
+#### 具备自动重连机制，并可设置重连时间，默认10S
 
 ## ○ 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
@@ -26,18 +27,19 @@ dependencies {
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
 ```
 MetaMqtt.with(this)
-                .url("XXX")
-                .port("XXX")
-                .client("mqtttest")
-                .username("XXX")
-                .password("XXX")
-                .topic("test")
-                .timeout(10)
-                .beat(20)
+                .url("XXX") 		 // 服务器URL
+                .port("XXX")		 // 服务器端口
+                .client("mqtttest")	 // MQTT客户端ID，默认为mqttApp，非必须
+                .username("XXX")	 // MQTT 用户名
+                .password("XXX")	 // MQTT 密码
+                .topic("test")		 // MQTT 订阅的主题
+                .timeout(10)		 // MQTT 超时时间，默认10S，非必须
+                .beat(20)		 // MQTT 心跳时间，默认20S，非必须
+		.retry(10)		 // MQTT 重试时间，默认10S，非必须
                 .callback(new MetaMqttCallBack(){})
-		.start();
+		.start();		 // 开始，let's do it
 ```
-### 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常等回调
+### 其中 callback 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常等回调
 ## ○ 原理
 #### 通过Service进行MQTT的连接，并在适当的时侯进行数据回调。
 ## License
