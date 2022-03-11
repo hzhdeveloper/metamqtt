@@ -8,6 +8,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.TimeUtils;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -86,59 +88,62 @@ public class MetaMqttService extends Service {
 
     private void ToConnectMqtt() {
         Log.e(TAG, "ToConnectMqtt");
-        try {
-            // 创建mqttClient
-            mqttClient = new MqttClient(serverUrl, clientId, new MemoryPersistence());
-            // 初始化配置
-            options = new MqttConnectOptions();
-            options.setCleanSession(false);
-            options.setUserName(username);
-            options.setWill("died/", ("mqtt died at time -- " + TimeUtils.getNowString()).getBytes(StandardCharsets.UTF_8), 1, false);
-            options.setPassword(password.toCharArray());
-            options.setConnectionTimeout(timeout);
-            options.setKeepAliveInterval(beatTime);
-            // 设置接收监听
-            mqttClient.setCallback(new MqttCallback() {
-                @Override
-                public void connectionLost(Throwable cause) {
-                    Log.e(TAG, "连接丢失");
-                    // 为减少系统轮询开销，应该在连接丢失时开启重连机制，等连接成功后再关闭重连机制
-                    mCallBack.connectLost();
-                    startConnectMachine();
-                }
+        if (NetworkUtils.isAvailable()) {
+            try {
+                // 创建mqttClient
+                mqttClient = new MqttClient(serverUrl, clientId, new MemoryPersistence());
+                // 初始化配置
+                options = new MqttConnectOptions();
+                options.setCleanSession(false);
+                options.setUserName(username);
+                options.setWill("died/", ("mqtt died at time -- " + TimeUtils.getNowString()).getBytes(StandardCharsets.UTF_8), 1, false);
+                options.setPassword(password.toCharArray());
+                options.setConnectionTimeout(timeout);
+                options.setKeepAliveInterval(beatTime);
+                // 设置接收监听
+                mqttClient.setCallback(new MqttCallback() {
+                    @Override
+                    public void connectionLost(Throwable cause) {
+                        Log.e(TAG, "连接丢失");
+                        // 为减少系统轮询开销，应该在连接丢失时开启重连机制，等连接成功后再关闭重连机制
+                        mCallBack.connectLost();
+                        startConnectMachine();
+                    }
 
-                @Override
-                public void messageArrived(String arriveTopic, MqttMessage message) {
-                    // 消息收到,自己的消息直接return
-                    Log.e(TAG, "收到MQTT消息" + arriveTopic);
-                    mCallBack.messageArrived(arriveTopic, message);
-//                    if (!arriveTopic.equals(topic)) {
-//
-//                    }
-                }
+                    @Override
+                    public void messageArrived(String arriveTopic, MqttMessage message) {
+                        // 消息收到,自己的消息直接return
+                        Log.e(TAG, "收到MQTT消息" + arriveTopic);
+                        mCallBack.messageArrived(arriveTopic, message);
+                    }
 
-                @Override
-                public void deliveryComplete(IMqttDeliveryToken token) {
-                    mCallBack.pushComplete();
-                }
-            });
-            // 连接mqtt
-            mqttClient.connect(options);
-            // 订阅
-            mqttClient.subscribe(topic, 1);
-            Log.e(TAG, "连接MQTT成功");
-            // 连接成功后将client返回，方便activity层面可以发消息
-            mCallBack.connectSuccess(mqttClient);
-            // 连接成功停止重连机制
-            stopConnectMachine();
-        } catch (MqttException e) {
-            e.printStackTrace();
-            // 消息收到
-            Log.e(TAG, "connect failed" + e.toString());
-            mCallBack.connectFailed();
-            // 开启重连机制
-            startConnectMachine();
+                    @Override
+                    public void deliveryComplete(IMqttDeliveryToken token) {
+                        mCallBack.pushComplete();
+                    }
+                });
+                // 连接mqtt
+                mqttClient.connect(options);
+                // 订阅
+                mqttClient.subscribe(topic, 1);
+                Log.e(TAG, "连接MQTT成功");
+                // 连接成功后将client返回，方便activity层面可以发消息
+                mCallBack.connectSuccess(mqttClient);
+                // 连接成功停止重连机制
+                stopConnectMachine();
+            } catch (MqttException e) {
+                e.printStackTrace();
+                // 消息收到
+                Log.e(TAG, "connect failed" + e.toString());
+                mCallBack.connectFailed();
+                // 开启重连机制
+                startConnectMachine();
+            }
+        } else {
+            // 网络没有连接
+            mCallBack.connectIntentError();
         }
+
     }
 
     /**
