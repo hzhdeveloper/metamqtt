@@ -32,7 +32,7 @@ dependencies {
 MetaMqtt.with(this)			 // 上下文Context
                 .url("XXX") 		 // 服务器URL
                 .port("XXX")		 // 服务器端口
-                .client("mqtttest")	 // MQTT客户端ID，默认为mqttApp，非必须，但多端不能重复
+                .client("mqtttest")	 // MQTT客户端ID，默认为mqttApp，非必须，但多端不能重复，否则导致无限重连
                 .username("XXX")	 // MQTT 用户名
                 .password("XXX")	 // MQTT 密码
                 .topic("test")		 // MQTT 订阅的主题，不能为空
