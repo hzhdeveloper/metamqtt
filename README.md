@@ -25,6 +25,7 @@ allprojects {
 dependencies {
 	implementation 'com.github.hzhdeveloper:metamqtt:1.0.2'
 }
+
 ```
 ## ○ 用法
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
