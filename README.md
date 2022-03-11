@@ -23,7 +23,7 @@ allprojects {
 ### 第二步 在app的build.gradle添加依赖项
 ```Groovy
 dependencies {
-	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-new'
+	implementation 'com.github.hzhdeveloper:metamqtt:1.0.2'
 }
 ```
 ## ○ 用法
