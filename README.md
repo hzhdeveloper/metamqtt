@@ -37,6 +37,7 @@ MetaMqtt.with(this)
                 .callback(new MetaMqttCallBack(){})
 		.start();
 ```
+### 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常等回调
 ## License
 ```
 Copyright 2022 - 2022 hzhdeveloper
