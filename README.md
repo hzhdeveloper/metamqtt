@@ -3,6 +3,10 @@
 
 ## 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
+### 添加网络权限
+```
+<uses-permission android:name="android.permission.INTERNET" />
+```
 ### 第一步 在项目的build.gradle添加maven地址（gradle版本<7.0）
 ```
 allprojects {
