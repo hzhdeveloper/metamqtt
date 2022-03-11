@@ -8,11 +8,11 @@
 ## ○ 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
 ### ◆ 请一定记得添加网络权限
-```
+```Java
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 ### 第一步 在项目的build.gradle添加maven地址（gradle版本<7.0）
-```
+```Java
 allprojects {
 	repositories {
 		...
@@ -21,14 +21,14 @@ allprojects {
 }
 ```
 ### 第二步 在app的build.gradle添加依赖项
-```
+```Java
 dependencies {
 	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-new'
 }
 ```
 ## ○ 用法
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
-```
+```Java
 MetaMqtt.with(this)			 // 上下文Context
                 .url("XXX") 		 // 服务器URL
                 .port("XXX")		 // 服务器端口
