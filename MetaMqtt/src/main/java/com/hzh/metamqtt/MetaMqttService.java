@@ -87,7 +87,7 @@ public class MetaMqttService extends Service {
     }
 
     private void ToConnectMqtt() {
-        Log.e(TAG, "ToConnectMqtt");
+        Log.e(TAG, "ToConnect");
         if (NetworkUtils.isAvailable()) {
             try {
                 // 创建mqttClient
