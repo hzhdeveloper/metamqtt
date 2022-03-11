@@ -12,7 +12,7 @@
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 ### 第一步 在项目的build.gradle添加maven地址（gradle版本<7.0）
-```Java
+```Groovy
 allprojects {
 	repositories {
 		...
@@ -21,7 +21,7 @@ allprojects {
 }
 ```
 ### 第二步 在app的build.gradle添加依赖项
-```Java
+```Groovy
 dependencies {
 	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-new'
 }
@@ -46,6 +46,7 @@ MetaMqtt.with(this)			 // 上下文Context
 ## ○ 注意事项
 #### 1.订阅的Topic主题如果要使用/ 或者 + 这两个通配符，那么 / 或者 + 的前后一定不能相同，建议这样使用：订阅的主题都为app/+或者app/#，然后发送消息时所用的主题建议为app/xxx
 #### 2.clientId一定不能重复，虽然说可以不设置，但还是尽可能的知道clientId，保证每个设备的clientId不一样，如果一样则会导致很多问题。
+#### 3.建议参考项目内的app demo实现
 ## ○ 原理
 #### 通过Service进行MQTT的连接，并在适当的时侯进行数据回调。
 ## ○ 后续
