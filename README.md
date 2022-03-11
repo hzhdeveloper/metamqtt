@@ -27,7 +27,7 @@ dependencies {
 ## ○ 用法
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
 ```
-MetaMqtt.with(this)
+MetaMqtt.with(this)			 // 上下文Context
                 .url("XXX") 		 // 服务器URL
                 .port("XXX")		 // 服务器端口
                 .client("mqtttest")	 // MQTT客户端ID，默认为mqttApp，非必须
