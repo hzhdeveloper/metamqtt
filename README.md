@@ -1,5 +1,5 @@
 ## <p align="center"> MetaMqtt</p>
-## <p align="center"> Author:Hzh|contact:28162830(QQ)</p>
+### <p align="center"> Author:Hzh|contact:28162830(QQ)</p>
 #### ◆ 一个MQTT的库，极大方便操作连接MQTT以及消息收发 。
 #### ◆ a dependence for mqtt to connect and get or send message☺☺
 #### ◆ 具备在断网来网、重进APP等自动重连机制，并可设置重连时间，默认10S
