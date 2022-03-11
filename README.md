@@ -1,7 +1,7 @@
 ## metamqtt
 一个MQTT的库，极大方便操作连接MQTT以及消息收发 。-------------------------------a dependence for mqtt to connect and get or send message☺☺
 
-## ·使用教程
+## ○ 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
 ### 请一定记得添加网络权限
 ```
@@ -22,7 +22,7 @@ dependencies {
 	    implementation 'com.github.hzhdeveloper:metamqtt:1.0.1'
 }
 ```
-## ·用法
+## ○ 用法
 ### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
 ```
 MetaMqtt.with(this)
