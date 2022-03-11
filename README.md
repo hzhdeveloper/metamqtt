@@ -2,7 +2,7 @@
 ### <p align="center"> Author:Hzh | contact:28162830(QQ) | [![](https://jitpack.io/v/hzhdeveloper/metamqtt.svg)](https://jitpack.io/#hzhdeveloper/metamqtt)</p>
 #### ◆ 一个MQTT的库，极大方便操作连接MQTT以及消息收发 。
 #### ◆ a dependence for mqtt to connect and get or send message☺☺
-#### ◆ 具备在断网来网、重进APP等自动重连机制，并可设置重连时间，默认10S
+#### ◆ 具备在断网来网、重进APP等情况下自动重连，并可设置重连时间，默认10S
 
 
 ## ○ 使用教程
