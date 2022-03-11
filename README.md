@@ -2,6 +2,7 @@
 #### ◆ 一个MQTT的库，极大方便操作连接MQTT以及消息收发 。
 #### ◆ a dependence for mqtt to connect and get or send message☺☺
 #### ◆ 具备在断网来网、重进APP等自动重连机制，并可设置重连时间，默认10S
+[![](https://jitpack.io/v/hzhdeveloper/metamqtt.svg)](https://jitpack.io/#hzhdeveloper/metamqtt)
 
 ## ○ 使用教程
 ### 如果你的gradle版本在7.0之上请在settings.gradle添加maven地址
