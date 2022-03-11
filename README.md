@@ -19,7 +19,7 @@ allprojects {
 ### 第二步 在app的build.gradle添加依赖项
 ```
 dependencies {
-	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-beta'
+	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-new'
 }
 ```
 ## ○ 用法
