@@ -131,7 +131,7 @@ public class MetaMqttService extends Service {
         } catch (MqttException e) {
             e.printStackTrace();
             // 消息收到
-            Log.e(TAG, "connect failed");
+            Log.e(TAG, "connect failed" + e.toString());
             mCallBack.connectFailed();
             // 开启重连机制
             startConnectMachine();
