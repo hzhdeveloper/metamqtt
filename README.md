@@ -10,16 +10,16 @@
 ### 第一步 在项目的build.gradle添加maven地址（gradle版本<7.0）
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 ### 第二步 在app的build.gradle添加依赖项
 ```
 dependencies {
-	    implementation 'com.github.hzhdeveloper:metamqtt:1.0.1'
+	implementation 'com.github.hzhdeveloper:metamqtt:1.0.1-beta'
 }
 ```
 ## ○ 用法
