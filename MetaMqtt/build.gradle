@@ -35,6 +35,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2'
-    implementation 'com.blankj:utilcodex:1.31.0'
+    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2'
+    api 'com.blankj:utilcodex:1.31.0'
 }
