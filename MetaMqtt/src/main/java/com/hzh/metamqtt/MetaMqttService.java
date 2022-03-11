@@ -91,7 +91,7 @@ public class MetaMqttService extends Service {
             mqttClient = new MqttClient(serverUrl, clientId, new MemoryPersistence());
             // 初始化配置
             options = new MqttConnectOptions();
-            options.setCleanSession(true);
+            options.setCleanSession(false);
             options.setUserName(username);
             options.setWill("died/", ("mqtt died at time -- " + TimeUtils.getNowString()).getBytes(StandardCharsets.UTF_8), 1, false);
             options.setPassword(password.toCharArray());
@@ -108,10 +108,13 @@ public class MetaMqttService extends Service {
                 }
 
                 @Override
-                public void messageArrived(String topic, MqttMessage message) {
-                    // 消息收到
-                    Log.e(TAG, "收到MQTT消息");
-                    mCallBack.messageArrived(topic, message);
+                public void messageArrived(String arriveTopic, MqttMessage message) {
+                    // 消息收到,自己的消息直接return
+                    Log.e(TAG, "收到MQTT消息" + arriveTopic);
+                    mCallBack.messageArrived(arriveTopic, message);
+//                    if (!arriveTopic.equals(topic)) {
+//
+//                    }
                 }
 
                 @Override
