@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 连接到MQTT服务器
         MetaMqtt.with(this)
-                .url("39.107.252.108")   // 120.26.203.18
+                .url("")
                 .port("1883")  // 18911
                 .client(CLIENT_ID)
                 .username("hzh")  // device_user
