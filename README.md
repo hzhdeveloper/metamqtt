@@ -27,8 +27,8 @@ dependencies {
 }
 
 ```
-## ○ 用法
-### 随便在Activity/Fragment的OnCreate方法甚至在全局Application中使用(如在全局使用，自己处理消息回调)
+## ○ 用法，以下具体用法最好参见demo部分
+### 第一种：在Activity/Fragment中单独使用，各自处理各自的信息。
 ```Java
 MetaMqtt.with(this)			 // 上下文Context
                 .url("XXX") 		 // 服务器URL
@@ -42,6 +42,27 @@ MetaMqtt.with(this)			 // 上下文Context
 		.retry(10)		 // MQTT 重试时间，默认10S，非必须
                 .callback(new MetaMqttCallBack(){})
 		.start();		 // 开始，let's do it
+```
+### 第二种：
+#### ① 全局Application中使用，在自定义的Application中添加如下，去除callback
+```Java
+MetaMqtt.with(this)			 // 上下文Context
+                .url("XXX") 		 // 服务器URL
+                .port("XXX")		 // 服务器端口
+                .client("mqtttest")	 // MQTT客户端ID，默认为mqttApp，非必须，但多端不能重复，否则导致无限重连
+                .username("XXX")	 // MQTT 用户名
+                .password("XXX")	 // MQTT 密码
+                .topic("test")		 // MQTT 订阅的主题，不能为空
+                .timeout(10)		 // MQTT 超时时间，默认10S，非必须
+                .beat(20)		 // MQTT 心跳时间，默认20S，非必须
+		.retry(10)		 // MQTT 重试时间，默认10S，非必须
+		.start();		 // 开始，let's do it
+```
+#### ② 在某个Activity/Fragment添加如下直接接收回调，好处在于只需要在Application中配置，在Activity中直接设置callback接收即可，注意不要忘记start，否则会报错。
+```Java
+MetaMqtt.with(this)
+                .callback(new MetaMqttCallBack() {}
+		.start();
 ```
 ### 其中 callback 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常以及网络未连接回调，如果不需要这么多回调，可以直接新建CallBack回调并作为抽象类继承MetaMqttCallBack。
 ## ○ 注意事项
