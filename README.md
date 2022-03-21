@@ -58,11 +58,10 @@ MetaMqtt.with(this)			 // 上下文Context
 		.retry(10)		 // MQTT 重试时间，默认10S，非必须
 		.start();		 // 开始，let's do it
 ```
-#### ② 在某个Activity/Fragment添加如下直接接收回调，好处在于只需要在Application中配置，在Activity中直接设置callback接收即可，注意不要忘记start，否则会报错。
+#### ② 在某个Activity/Fragment添加如下直接接收回调，好处在于只需要在Application中配置，在Activity中直接设置callback接收即可，非常方便。
 ```Java
 MetaMqtt.with(this)
-                .callback(new MetaMqttCallBack() {}
-		.start();
+                .callback(new MetaMqttCallBack() {};
 ```
 ### 其中 callback 可以接收到的回调包括：连接成功、连接失败、连接丢失、收到消息、发送消息成功、重连成功、重连失败、所连接的MqttClient异常以及网络未连接回调，如果不需要这么多回调，可以直接新建CallBack回调并作为抽象类继承MetaMqttCallBack。
 ## ○ 注意事项
