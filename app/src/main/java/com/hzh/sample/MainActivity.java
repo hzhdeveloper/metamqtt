@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void connectFailed() {
-                        Log.e(TAG, "connectFailed");
+                    public void connectFailed(MqttException e) {
+                        Log.e(TAG, "connectFailed, error:" + e.toString());
                     }
 
                     @Override

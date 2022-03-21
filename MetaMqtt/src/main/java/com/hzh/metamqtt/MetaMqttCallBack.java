@@ -1,6 +1,7 @@
 package com.hzh.metamqtt;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 /**
@@ -16,7 +17,7 @@ public interface MetaMqttCallBack {
      */
     void connectSuccess(MqttClient mqttClient);
 
-    void connectFailed();
+    void connectFailed(MqttException e);
 
     /**
      * 连接丢失不用理会，有自动重连机制
