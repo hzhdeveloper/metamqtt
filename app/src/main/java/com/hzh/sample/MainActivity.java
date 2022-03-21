@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
         // 连接到MQTT服务器
         MetaMqtt.with(this)
-                .url("39.107.252.108")   // 120.26.203.18  39.107.252.108
-                .port("1883")  // 18911  1883
+                .url("")
+                .port("")
                 .client(CLIENT_ID)
-                .username("hzh")  // device_user
-                .password("hzh")  // d0c67428-8f97-dada-f2ca-3da8c28c548a
+                .username("")  // 
+                .password("")  // 
                 .topic(TOPIC_MESSAGE)
                 .timeout(10)
                 .beat(20)
